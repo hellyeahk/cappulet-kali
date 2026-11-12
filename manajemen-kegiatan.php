@@ -1,0 +1,110 @@
+<?php
+require_once 'includes/auth-check.php';
+?>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manajemen Kegiatan - Capullet</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/admin/manajemen-kegiatan.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="admin-page">
+    <header class="admin-header">
+        <nav class="container">
+            <a href="dashboard-admin.php" class="logo">
+                <img src="images/logo.png" alt="Logo Capullet">
+            </a>
+            <div class="menu-toggle">
+                <span class="bar-top"></span>
+                <span class="bar-middle"></span>
+                <span class="bar-bottom"></span>
+            </div>
+            <ul>
+                <li><a href="dashboard-admin.php">Dashboard</a></li>
+                <li><a href="manajemen-produk.php">Produk</a></li>
+                <li><a href="manajemen-kategori.php">Kategori</a></li>
+                <li><a href="manajemen-penjualan.php">Penjualan</a></li>
+                <li><a href="manajemen-kegiatan.php" class="active">Kegiatan</a></li>
+                <li><a href="manajemen-tentang-kami.php">Tentang Kami</a></li>
+                <li><a href="manajemen-kontak.php">Kontak</a></li>
+                <li><a href="manajemen-pengaturan.php">Pengaturan</a></li>
+                <li class="mobile-logout"><a href="#">Keluar</a></li>
+            </ul>
+            <a href="#" class="btn btn-logout desktop-logout">Keluar</a>
+        </nav>
+    </header>
+
+    <main class="admin-main container">
+        <h1 class="admin-page-title">MANAJEMEN KEGIATAN</h1>
+        
+        <!-- VIEW 1: LIST KEGIATAN -->
+        <div class="management-container" id="activity-list-view">
+            <div class="management-header">
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Cari Kegiatan...">
+                </div>
+                <button class="btn-add" id="btnShowAddForm"><i class="fas fa-plus"></i> Tambah Kegiatan</button>
+            </div>
+
+            <div class="activity-management-grid" id="activityGridContainer">
+                <!-- Item kegiatan akan di-render di sini oleh JS -->
+            </div>
+        </div>
+
+        <!-- VIEW 2: FORM TAMBAH/EDIT (Hidden Default) -->
+        <div class="management-container hidden" id="activity-form-view">
+            <div class="activity-form-layout">
+                <!-- Kolom Kiri: Gambar -->
+                <div class="form-left-col">
+                    <!-- Kotak Preview Gambar (Sesuai Global CSS) -->
+                    <div class="image-preview-box">
+                        <img id="previewImage" src="images/placeholder-image.jpg" alt="Preview">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="activityImageInput">Gambar Kegiatan</label>
+                        <input type="file" id="activityImageInput" accept="image/*">
+                    </div>
+
+                    <div class="form-actions-buttons">
+                        <button class="btn-edit" id="btnCancelForm" style="justify-content: center;">
+                            <i class="fas fa-undo"></i> Kembali
+                        </button>
+                        <button class="btn-add" id="btnSaveActivity" style="justify-content: center; width: 100%;">
+                            <i class="fas fa-save"></i> Simpan
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Kolom Kanan: Input Text -->
+                <div class="form-right-col">
+                    <input type="hidden" id="activityId">
+
+                    <div class="form-group">
+                        <label for="activityTitle">Judul Kegiatan</label>
+                        <input type="text" id="activityTitle" placeholder="Nama acara / kegiatan">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="activityDesc">Deskripsi Kegiatan</label>
+                        <textarea id="activityDesc" rows="8" placeholder="Jelaskan detail kegiatan di sini..."></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="admin-footer">
+        <p>© 2025 Capullet. All rights reserved.</p>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/global.js"></script>
+    <script src="js/admin/logout.js"></script>
+    <script src="js/admin/manajemen-kegiatan.js"></script>
+</body>
+</html>
